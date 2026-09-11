@@ -1,0 +1,12 @@
+{
+  "name": "locksmith",
+  "version": "0.1.0",
+  "description": "A migration linter that predicts PostgreSQL lock duration from real table statistics - verified against real servers, version by version.",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=22.6" },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node src/demo.ts"
+  }
+}
