@@ -53,5 +53,5 @@ for (const version of [10, 16]) {
 console.log('  The first statement is the point. On PG 10 it rewrites 400M rows');
 console.log('  and stalls every write for minutes. On PG 11+ it is a catalogue');
 console.log('  update that takes milliseconds. A linter that does not know your');
-console.log('  server version has to report one of those two answers, and will');
-console.log('  be badly wrong roughly half the time.\n');
+console.log('  server version has to pick one of those two answers, and is');
+console.log('  wrong for whichever version it did not pick.\n');

@@ -3,10 +3,10 @@ import type { Operation } from './locks.ts';
 /**
  * Classify migration statements.
  *
- * Production should use `pgsql-parser`, which embeds the real PostgreSQL
- * grammar. This is a focused classifier over the DDL that actually appears in
- * migrations, written so the classification rules - and their ordering, which
- * is where these go wrong - are inspectable.
+ * A focused, regex-based classifier over the DDL that actually appears in
+ * migrations. It is not a full SQL parser (a grammar-based parser such as
+ * pgsql-parser would be the natural upgrade); the rules and their ordering,
+ * which is where classifiers like this go wrong, are kept small and inspectable.
  */
 
 export interface ParsedStatement {

@@ -1,7 +1,7 @@
 /**
  * The PostgreSQL lock-conflict matrix, encoded as data, per major version.
  *
- * THE DIFFERENTIATOR LIVES HERE.
+ * The version-dependence of each operation is recorded here.
  *
  * Most migration linters pattern-match on keywords and give version-blind
  * advice. That advice is not merely imprecise, it is WRONG for modern

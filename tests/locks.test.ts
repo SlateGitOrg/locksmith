@@ -50,7 +50,7 @@ describe('the lock conflict matrix', () => {
   });
 });
 
-describe('THE DIFFERENTIATOR: version-dependent behaviour', () => {
+describe('version-dependent behaviour', () => {
   test('ADD COLUMN ... DEFAULT rewrites on PG 10 and does not on PG 11+', () => {
     assert.equal(behaviourFor('ADD_COLUMN_DEFAULT', 10).tableScan, 'rewrite');
     assert.equal(behaviourFor('ADD_COLUMN_DEFAULT', 11).tableScan, 'none');
