@@ -67,8 +67,7 @@ describe('version-dependent behaviour', () => {
       `expected a long rewrite, got ${pg10.estimatedBlockMs}ms`);
     assert.equal(pg16.severity, 'SAFE');
     assert.ok(pg16.estimatedBlockMs < 100);
-    // A version-blind linter reports the PG 10 answer on a PG 16 server. Half
-    // its warnings are then visibly false, and users stop reading it.
+    // A version-blind linter would report the PG 10 answer on a PG 16 server.
   });
 
   test('a volatile default still rewrites, even on PG 16', () => {

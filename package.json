@@ -1,10 +1,10 @@
 {
   "name": "locksmith",
   "version": "0.1.0",
-  "description": "A migration linter that predicts PostgreSQL lock duration from real table statistics - verified against real servers, version by version.",
+  "description": "A migration linter that that predicts which PostgreSQL lock a DDL statement takes and how long it blocks, for a given server version and table size.",
   "type": "module",
   "private": true,
-  "engines": { "node": ">=22.6" },
+  "engines": { "node": ">=22.18" },
   "scripts": {
     "test": "node --test",
     "demo": "node src/demo.ts"

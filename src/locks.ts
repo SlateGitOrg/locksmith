@@ -4,16 +4,14 @@
  * The version-dependence of each operation is recorded here.
  *
  * Most migration linters pattern-match on keywords and give version-blind
- * advice. That advice is not merely imprecise, it is WRONG for modern
- * PostgreSQL: `ADD COLUMN ... DEFAULT` rewrote the whole table before 11 and
- * does not from 11 onward; `ADD COLUMN ... NOT NULL DEFAULT` was outright
- * forbidden before 11. A linter that still reports the pre-11 behaviour trains
- * its users to ignore it, because half its warnings are visibly false.
+ * advice, which is wrong for modern PostgreSQL: `ADD COLUMN ... DEFAULT`
+ * rewrote the whole table before 11 and does not from 11 onward;
+ * `ADD COLUMN ... NOT NULL DEFAULT` was forbidden before 11.
  *
- * So the matrix is data, keyed by version, and the estimate is derived from
- * live `pg_stat` figures rather than folklore. "This will block writes on
- * `orders` for about 9 minutes" is a sentence somebody acts on. "This statement
- * takes a lock" is not.
+ * So the matrix is data, keyed by version, and the blocking-time estimate is
+ * derived from the caller-supplied row count, index count and write rate.
+ * "This will block writes on `orders` for about N minutes" is something a
+ * reviewer can act on; "this statement takes a lock" is not.
  */
 
 /** PostgreSQL's eight table-level lock modes, weakest to strongest. */
@@ -167,7 +165,7 @@ export interface TableStats {
   readonly name: string;
   readonly rows: number;
   readonly indexes: number;
-  /** Observed writes per second, from pg_stat_user_tables over a window. */
+  /** Writes per second against the table, supplied by the caller. */
   readonly writesPerSecond: number;
 }
 
